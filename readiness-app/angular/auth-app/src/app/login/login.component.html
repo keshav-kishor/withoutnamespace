@@ -1,0 +1,92 @@
+<div *ngIf="showLogin">
+<div *ngIf="errorMessage.authSettingsError || errorMessage.refreshTokenError" class="slds-box slds-clearfix">
+  <div role="alert">{{errorMessage.authSettingsError || errorMessage.refreshTokenError}}</div>
+  <button class="slds-button slds-button_neutral slds-m-top_x-small slds-float_right" (click)='hideAuthSettingsError()'>{{'ok' | translate}}</button>
+</div>
+
+<div  *ngIf="errorMessage.callCenterError"  class="slds-notify_container slds-is-relative">
+  <div class="errorBox" role="status">
+    An error occurred while configuring the Call Center for authentication. <br/> Please contact your system adminstrator.
+  </div>
+</div>
+
+<div class="slds-spinner_container" *ngIf="canShowSpinner">
+  <div class="slds-align_absolute-center">
+      <div class="slds-spinner slds-spinner_medium slds-spinner_brand" role="status">
+          <div class="slds-spinner__dot-a"></div>
+          <div class="slds-spinner__dot-b"></div>
+      </div>
+  </div>
+</div>
+<div *ngIf="isExternalAuthenticationEnabled || isCentralAuthenticationEnabled" class="login-form slds-box slds-grid slds-grid_vertical slds-grid_vertical-align-center slds-size-full" [style.background-image]="getBackground()">
+  <div id="signInLabel" class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3 slds-p-bottom_medium slds-border_bottom slds-text-heading_small">{{'signIn' | translate}}</div>  
+  <div *ngIf="isExternalAuthenticationEnabled" class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3 slds-p-top_medium">
+    <div id="ssoHeader" class="slds-text-align_left">{{'ssoLoginInfo' | translate}}</div>
+    <div id="ssoErrorMessage" class="slds-p-top_medium slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3 errorMessage slds-text-color_error" *ngIf="errorMessage.idpError" role="alert">{{ errorMessage.idpError }}</div>
+    <div class="slds-col slds-p-top_medium slds-p-bottom_medium">
+      <button (click)="authenticateIdp()" id="companySignIn" class="slds-button slds-button_brand slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">{{'companySignIn' | translate}}</button>
+    </div>
+  </div>
+  <div id="orLabel" class="slds-p-top_medium slds-text-align_center" *ngIf="isExternalAuthenticationEnabled && isCentralAuthenticationEnabled">{{'or' | translate}}</div>
+  <form id="loginForm" [formGroup]="loginForm" *ngIf="isCentralAuthenticationEnabled" class="slds-col slds-grid slds-grid_vertical slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3 slds-p-top_medium">
+    <div id="centralHeader" class="slds-text-align_left" *ngIf="isExternalAuthenticationEnabled">{{'centralLoginInfo' | translate}}</div>
+    <div id="centralErrorMessage" class="slds-m-top_x-small" *ngIf="username.invalid && username.touched">
+      <div *ngIf="username.errors?.required" role="alert">
+          <div id="requiredErrorMsg" class="slds-text-color_error">{{'usernameRequired' | translate}}</div>
+      </div>
+      <div *ngIf="!username.errors?.required && username.errors?.forbiddenName" role="alert">
+          <div id="invalidErrorMsg" class="slds-text-color_error">{{'usernameIsNotValid' | translate}}</div>
+      </div>
+    </div>
+    <div class="slds-m-top_x-small" *ngIf="errorMessage?.centralError" role="alert">
+      <div id="errorMsgFromAPI" class="slds-text-color_error">{{errorMessage.centralError}}</div>
+    </div>
+    <div class="slds-form-element slds-p-top_medium">
+      <label id="usernameLabel" class="slds-form-element__label">{{'username' | translate}}</label>
+      <div class="slds-form-element__control">
+        <input id="username" class="slds-input" type="text" formControlName="username" placeholder="{{'username' | translate}}" />
+      </div>
+    </div>
+    <div class="slds-form-element slds-p-top_medium">
+      <label id="passwordLabel" class="slds-form-element__label">{{'password' | translate}}</label>
+      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+        <input id="password" class="slds-input" [type]="canShowPwd ? 'text' : 'password'" placeholder="{{'password' | translate}}" formControlName="password" />
+        <button id="previewIcon" class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" (click)="togglePassword()">
+          <svg class="slds-button__icon slds-icon-text-light" aria-hidden="true">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" attr.xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#{{pwdIcon}}" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="slds-form-element slds-p-top_medium">
+      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+        <select formControlName="area" class="slds-input">
+          <option *ngFor="let area of areaMapping" [ngValue]="area.name" >
+            {{ area.abbrev }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="slds-form-element slds-p-top_medium">
+      <div class="slds-form-element__control">
+        <div class="slds-checkbox">
+          <input type="checkbox" name="rememberMe" formControlName="rememberMe" id="rememberMe"  />
+          <label class="slds-checkbox__label" for="rememberMe">
+            <span class="slds-checkbox_faux"></span>
+            <span id="rememberMeLabel" class="slds-form-element__label">{{'rememberMe' | translate}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="slds-p-top_medium slds-p-bottom_medium">
+      <button id="signInButton" class="slds-button slds-button_brand slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" (click)="authenticateUser()" [disabled]="canDisableSignIn()">{{'signIn' | translate}}</button>
+    </div>
+  </form>
+  <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3 slds-p-top_medium slds-border_top slds-text-align_center" *ngIf="isForgotPassword">
+    <a class="slds-button" role="button" id="forgotPassword" (click)="recoverPassword()">{{'forgotPwd' | translate}}?</a>
+  </div>
+  <div class="slds-col_bump-top slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3">
+    <img class="slds-float_right" src="{{initParam.resourceBase}}/assets/images/branding-logo.svg">
+  </div>
+</div>
+</div>

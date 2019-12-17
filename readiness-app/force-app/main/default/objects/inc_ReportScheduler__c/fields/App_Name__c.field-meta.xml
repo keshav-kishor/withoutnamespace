@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>App_Name__c</fullName>
+    <description>Name of the Analytics App</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Name of the Analytics App</inlineHelpText>
+    <label>App Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sales Productivity</fullName>
+                <default>false</default>
+                <label>Sales Productivity</label>
+            </value>
+            <value>
+                <fullName>Case Analysis</fullName>
+                <default>false</default>
+                <label>Case Analysis</label>
+            </value>
+            <value>
+                <fullName>Voice Quality Analysis</fullName>
+                <default>false</default>
+                <label>Voice Quality Analysis</label>
+            </value>
+            <value>
+                <fullName>Customer Satisfaction (CSAT)</fullName>
+                <default>false</default>
+                <label>Customer Satisfaction (CSAT)</label>
+            </value>
+            <value>
+                <fullName>Lead Conversion Analysis</fullName>
+                <default>false</default>
+                <label>Lead Conversion Analysis</label>
+            </value>
+            <value>
+                <fullName>Opportunity Conversion Analysis</fullName>
+                <default>false</default>
+                <label>Opportunity Conversion Analysis</label>
+            </value>
+            <value>
+                <fullName>Volume Profit Analysis</fullName>
+                <default>false</default>
+                <label>Volume Profit Analysis</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

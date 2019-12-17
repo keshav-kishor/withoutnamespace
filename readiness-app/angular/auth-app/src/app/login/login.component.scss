@@ -1,0 +1,21 @@
+
+.errorMessage {
+    word-break: break-word;
+}
+
+.login-form {
+    height: 100%;
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+}
+
+.errorBox {
+    display: block;
+    white-space: pre;
+    border: 2px solid #c77;
+    padding: 0 1em 0 1em;
+    margin: 1em;
+    background-color: #fdd;
+    color: black;
+    height: 70px;
+    font-size: 18px;
+}

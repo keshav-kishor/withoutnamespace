@@ -1,0 +1,261 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "src/angular",
+  "projects": {
+    "auth-app": {
+      "root": "readiness-app/angular/auth-app/",
+      "sourceRoot": "readiness-app/angular/auth-app/src",
+      "projectType": "application",
+      "prefix": "auth",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/auth-app",
+            "index": "readiness-app/angular/auth-app/src/index.html",
+            "main": "readiness-app/angular/auth-app/src/main.ts",
+            "polyfills": "readiness-app/angular/auth-app/src/polyfills.ts",
+            "tsConfig": "readiness-app/angular/auth-app/tsconfig.app.json",
+            "assets": [
+              "readiness-app/angular/auth-app/src/favicon.ico",
+              "readiness-app/angular/auth-app/src/assets"
+            ],
+            "styles": [
+              "readiness-app/angular/auth-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "sf": {
+              "fileReplacements": [	
+                {	
+                  "replace": "readiness-app/angular/auth-app/src/environments/environment.ts",	
+                  "with": "readiness-app/angular/auth-app/src/environments/environment.sf.ts"	
+                }	
+              ],
+              "assets": [
+                "readiness-app/angular/auth-app/src/favicon.ico",
+                "readiness-app/angular/auth-app/src/assets"
+              ],
+              "styles": [
+                "readiness-app/angular/auth-app/src/styles.scss"
+              ]
+            },
+            "dev": {
+              "assets": [
+                "readiness-app/angular/auth-app/src/favicon.ico",
+                "readiness-app/angular/auth-app/src/assets",
+                {
+                  "glob": "**/*",
+                  "input": "readiness-app/angular/auth-app/src/data",
+                  "output": "/data/"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/@salesforce-ux/design-system/assets/fonts",
+                  "output": "/_slds/fonts/"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/@salesforce-ux/design-system/assets/icons",
+                  "output": "/_slds/icons/"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/@salesforce-ux/design-system/assets/images",
+                  "output": "/_slds/images/"
+                }
+              ],
+              "styles": [
+                "readiness-app/angular/auth-app/src/styles.scss",
+                "node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css"
+              ]
+            },
+            "ci": {
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "vendorChunk": true,
+              "showCircularDependencies": true,
+              "buildOptimizer": true,
+              "progress": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "readiness-app/angular/auth-app/src/environments/environment.ts",
+                  "with": "readiness-app/angular/auth-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "vendorChunk": true,
+              "showCircularDependencies": true,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "auth-app:build",
+            "port": 4201
+          },
+          "configurations": {
+            "dev": {
+              "browserTarget": "auth-app:build:dev"
+            },
+            "sf": {
+              "browserTarget": "auth-app:build:sf"
+            },
+            "ci": {
+              "browserTarget": "auth-app:build:dev",
+              "progress": false
+            },
+            "production": {
+              "browserTarget": "auth-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "auth-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "codeCoverage": true,
+            "main": "readiness-app/angular/auth-app/src/test.ts",
+            "polyfills": "readiness-app/angular/auth-app/src/polyfills.ts",
+            "tsConfig": "readiness-app/angular/auth-app/tsconfig.spec.json",
+            "karmaConfig": "readiness-app/angular/auth-app/karma.conf.js",
+            "styles": [
+              "readiness-app/angular/auth-app/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "readiness-app/angular/auth-app/src/favicon.ico",
+              "readiness-app/angular/auth-app/src/assets"
+            ]
+          },
+          "configurations": {
+            "ci": {
+              "progress": false,
+              "watch": false,
+              "browsers": "ChromeHeadless"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "readiness-app/angular/auth-app/tsconfig.app.json",
+              "readiness-app/angular/auth-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "auth-app-e2e": {
+      "root": "readiness-app/angular/auth-app-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "readiness-app/angular/auth-app-e2e/protractor.conf.js",
+            "devServerTarget": "auth-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "auth-app:serve:production"
+            },
+            "ci": {
+              "protractorConfig": "readiness-app/angular/auth-app-e2e/protractor-ci.conf.js",
+              "devServerTarget": "auth-app:serve:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "readiness-app/angular/auth-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "common-lib": {
+      "root": "readiness-app/angular/common-lib",
+      "sourceRoot": "readiness-app/angular/common-lib/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "readiness-app/angular/common-lib/tsconfig.lib.json",
+            "project": "readiness-app/angular/common-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "readiness-app/angular/common-lib/src/test.ts",
+            "tsConfig": "readiness-app/angular/common-lib/tsconfig.spec.json",
+            "karmaConfig": "readiness-app/angular/common-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "readiness-app/angular/common-lib/tsconfig.lib.json",
+              "readiness-app/angular/common-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "auth-app"
+}

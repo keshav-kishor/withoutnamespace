@@ -1,0 +1,72 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <ltng:require styles="{!$Resource.inc_HidePageTitle}"/>
+    <aura:attribute name="categoryList"  type="List" />
+    <aura:handler event="c:inc_CategoryDetailBack" action="{!c.onBackClick}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div aura:id="templateDetailTop" class="slds-subPage-header" >
+        
+        <div class="app-high-level slds-p-around_medium">
+            
+                <img src="{!$Resource.Tab_Icon}" class="mainIcon"/>
+            
+            <div class="app-title">
+                
+                CXone Performance Analytics for Salesforce Einstein
+                <lightning:button aura:id="backBttnDiv" class="backBttn slds-hide" variant="Neutral"  label="Back" title="Back" onclick="{! c.onBackClick }"/>
+                <div aura:id="custTem" class="app-subtitle" >
+                    <p>Select the key business driver for your contact center</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div aura:id="custTemp">
+        <fieldset class="slds-form-element">
+            
+            <div class="slds-form-element__control">
+                <aura:iteration items="{!v.categoryList}" var="category">
+                    <div class="template-tile">
+                        <label for="AP">
+                            <div class="template-tile-content">
+                                <div class="tile-header">
+                                    <div class="tile-icon">
+                                        <img src="{!category.icon}"/>
+                                    </div>
+                                    <p class="tile-title slds-truncate" title="Change Analytics">{!category.name}</p>
+                                    <div class="infoIcon" >
+                                        <!--lightning:icon   size="x-small" iconName="utility:info_alt" alternativeText="info" /-->
+                                        <lightning:helptext style="" iconName="utility:info_alt" size="medium"  content="{!category.description}"/>
+                                    </div>
+                                </div>
+                                <aura:iteration items="{!category.apps}" var="app">
+                                    <div class="tile-body">
+                                        <p class="multi-line-ellipse">
+                                            <span class="appIcon" > <img class="appIcon" src="{!app.icon}"/></span>
+                                            <a href="javascript:void(0)" ><span class="app-text" data-num="{!app.id}" onclick="{!c.onAppClick}">&nbsp;{!app.name}</span></a>
+                                            <span class="infoIcon" > 
+                                                <!--lightning:icon   size="x-small" iconName="utility:info_alt" alternativeText="info" /-->
+                                                <lightning:helptext style="" iconName="utility:info_alt" size="medium"  content="{!app.description}"/>
+                                            </span>
+                                        </p>
+                                        
+                                    </div>
+                                </aura:iteration>
+                            </div>
+                        </label>
+                    </div>
+                </aura:iteration>
+            </div>
+        </fieldset>
+    </div>
+    <div aura:id="incDashboard"> 
+        <c:inc_EinstienDashboard />
+    </div>
+    <div aura:id="SPDashboard"> 
+        <c:inc_OpportunityDashboard/>
+    </div>
+    <div aura:id="repScheduler"> 
+        <c:inc_EinsteinListShedularPage/>
+    </div>
+    
+</aura:component>

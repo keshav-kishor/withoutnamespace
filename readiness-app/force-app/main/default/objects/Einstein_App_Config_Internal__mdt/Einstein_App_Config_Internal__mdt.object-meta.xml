@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Settings to store secured data, that is being used by the application developers only. Subscribers org should not be read / modify this data</description>
+    <label>Einstein App Config Internal</label>
+    <pluralLabel>Einstein App Config Internals</pluralLabel>
+    <visibility>Protected</visibility>
+</CustomObject>

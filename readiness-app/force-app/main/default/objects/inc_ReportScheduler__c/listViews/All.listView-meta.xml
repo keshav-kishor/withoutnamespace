@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Category__c</columns>
+    <columns>App_Name__c</columns>
+    <columns>NAME</columns>
+    <columns>Frequency__c</columns>
+    <columns>Scheduled_Day__c</columns>
+    <columns>Start_DateTime__c</columns>
+    <columns>UpdateScheduledJob__c</columns>
+    <columns>CRON_Expression__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

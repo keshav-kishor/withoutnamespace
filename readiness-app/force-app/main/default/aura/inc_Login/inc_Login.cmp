@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="loginPage" type="String"/>
+    <iframe src="{!v.loginPage}" style="position: absolute; height: 95%; width: 100%; border: none"/>
+</aura:component>

@@ -1,0 +1,28 @@
+{
+    "packageDirectories": [
+        {
+            "path": "readiness-app/force-app",
+            "package": "readiness-app",
+            "versionName": "readiness app - Summer '20",
+            "versionNumber": "1.0.0.NEXT",
+            "default": true
+        },
+        {
+            "path": "einstein-app",
+            "package": "einstein-app",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "readiness-app",
+                    "versionNumber": "1.0.0.LATEST"
+                }
+            ]
+        }
+    ],
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "47.0",
+    "packageAliases": {
+    }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is list of various reports that are used for Einstein App.</description>
+    <label>InContact Report</label>
+    <pluralLabel>InContact Reports</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

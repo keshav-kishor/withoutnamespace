@@ -1,0 +1,137 @@
+.THIS .slds-th__action{ 
+    justify-content: left !important; 
+}
+
+.THIS .slds-grid_align-end { 
+ justify-content: center !important; 
+}
+.THIS table thead th {
+  
+   font-weight:bold;
+    
+left: 783px;
+width: 124px;
+
+text-align: right;
+font: Bold 11px/15px Open Sans;
+letter-spacing: 0;
+color: #8C95A5;
+text-transform: uppercase;
+opacity: 1;
+}
+.THIS table thead td {
+  
+   top: 253px;
+left: 296px;
+width: 134px;
+height: 19px;
+text-align: left;
+font: Regular 14px/19px Open Sans;
+letter-spacing: 0;
+color: #333333;
+opacity: 1;
+}
+.THIS .cols {
+    background-color: #16325c;
+    color: red;
+}
+
+.THIS .slds-scrollable_x { overflow: hidden; }
+.THIS .slds-scrollable_y { overflow: hidden; }
+
+.THIS .label.slds-form-element__label{
+    
+    font-size: 1.00rem;
+    color: black;
+}
+
+.THIS .tablecol thead th span {
+    background-color: white;
+    color: black;
+}
+.THIS .myTable .slds-th__action .slds-th__action-button { display: none; }
+
+.THIS .slds-button_icon-bare{
+    display: none;
+}
+.THIS .myTable .slds-th__action .slds-th__action-button { display: none; }
+
+.THIS .slds-button_icon-bare{
+    display: none;
+}
+.THIS .slds-align_absolute-center .slds-align--absolute-center {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: flex-start;
+    margin: auto;
+}
+.THIS.cInc_TabComponent .slds-button {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    background: transparent;
+    background-clip: border-box;
+    white-space: normal;
+    right: 1px;
+    position: relative !important;
+}
+.THIS .slds-dropdown-trigger {
+    display: inline-block;
+    position: relative;
+    
+}
+.THIS lightning-primitive-header-actions {
+    display: none;
+}
+.THIS {
+}
+.THIS .flexibleScheduleContainer {
+    padding: 1rem 2rem 2rem;
+    min-height: 21rem;
+}
+.THIS .freqDropdown {
+    display: block;
+    width: 50%;
+}
+.THIS .startTimeContainer {
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+}
+.THIS .konaForm {
+    
+    display: flex;
+}
+.THIS .dayOfWeek {
+    width: auto;
+    margin-right: 2rem;
+}
+.THIS .style-guide.input-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    top: .25rem;
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+    border: 1px solid #c5d2e0;
+    background-color: #fff;
+    outline: 0;
+    vertical-align: middle;
+    transition-duration: .2s;
+    transition-property: background-color,border;
+}
+.THIS  .style-guide.input-checkbox:checked:after {
+    display: block;
+    content: "";
+    height: 5px;
+    width: 10px;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    transform: translate(2px,3px) rotate(-45deg);
+}
+.THIS .style-guide.input-checkbox:checked {
+    background-color: #44a2f5;
+    box-shadow: none;
+    border: 1px solid transparent;
+}

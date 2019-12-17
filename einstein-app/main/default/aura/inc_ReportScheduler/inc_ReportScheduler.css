@@ -1,0 +1,31 @@
+.THIS .slds-form--inline .slds-form-element__control {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.THIS .removePadding{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.THIS .schDiv{
+    background-color:white;
+}
+.THIS .onboardImg{
+    margin-left:20%;
+}
+.THIS .onboard p{
+        font-size: 8pt;
+    line-height: 1.5;
+    color:#294766;
+}
+.THIS .onboardDt{
+        font-size: 8pt;
+    line-height: 1.5;
+    color:#294766;
+}

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Completed_Contact_Details</label>
+    <protected>true</protected>
+    <values>
+        <field>Dataset_Name__c</field>
+        <value xsi:type="xsd:string">Completed_Contact_Details2</value>
+    </values>
+    <values>
+        <field>MetaData_Json__c</field>
+        <value xsi:type="xsd:string">{  
+   &quot;fileFormat&quot;:{  
+      &quot;charsetName&quot;:&quot;UTF-8&quot;,
+      &quot;fieldsDelimitedBy&quot;:&quot;,&quot;,
+      &quot;fieldsEnclosedBy&quot;:&quot;\&quot;&quot;,
+      &quot;linesTerminatedBy&quot;:&quot;\r\n&quot;
+   },
+   &quot;objects&quot;:[  
+      {  
+         &quot;connector&quot;:&quot;CSV&quot;,
+         &quot;fullyQualifiedName&quot;:&quot;result_csv&quot;,
+         &quot;label&quot;:&quot;result.csv&quot;,
+         &quot;name&quot;:&quot;result_csv&quot;,
+         &quot;fields&quot;:[  
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;Agent_Seconds&quot;,
+               &quot;name&quot;:&quot;Agent_Seconds&quot;,
+               &quot;type&quot;:&quot;Numeric&quot;,
+               &quot;label&quot;:&quot;Agent Seconds&quot;,
+               &quot;precision&quot;:18,
+               &quot;defaultValue&quot;:&quot;0&quot;,
+               &quot;scale&quot;:0,
+               &quot;format&quot;:&quot;0&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;ContactId&quot;,
+               &quot;name&quot;:&quot;ContactId&quot;,
+               &quot;type&quot;:&quot;Text&quot;,
+               &quot;label&quot;:&quot;ContactId&quot;
+               
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;Contact_Start&quot;,
+               &quot;name&quot;:&quot;Contact_Start&quot;,
+               &quot;type&quot;:&quot;Date&quot;,
+               &quot;label&quot;:&quot;Contact Start&quot;,
+               &quot;format&quot;:&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS&#39;Z&#39;&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;First_Name&quot;,
+               &quot;name&quot;:&quot;First_Name&quot;,
+               &quot;type&quot;:&quot;Text&quot;,
+               &quot;label&quot;:&quot;First Name&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;inQueue_Seconds&quot;,
+               &quot;name&quot;:&quot;inQueue_Seconds&quot;,
+               &quot;type&quot;:&quot;Numeric&quot;,
+               &quot;label&quot;:&quot;inQueue Seconds&quot;,
+               &quot;precision&quot;:18,
+               &quot;defaultValue&quot;:&quot;0&quot;,
+               &quot;scale&quot;:0,
+               &quot;format&quot;:&quot;0&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;Last_Name&quot;,
+               &quot;name&quot;:&quot;Last_Name&quot;,
+               &quot;type&quot;:&quot;Text&quot;,
+               &quot;label&quot;:&quot;Last Name&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;Media_Type_Name&quot;,
+               &quot;name&quot;:&quot;Media_Type_Name&quot;,
+               &quot;type&quot;:&quot;Text&quot;,
+               &quot;label&quot;:&quot;Media Type Name&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;postQueueSeconds&quot;,
+               &quot;name&quot;:&quot;postQueueSeconds&quot;,
+               &quot;type&quot;:&quot;Numeric&quot;,
+               &quot;label&quot;:&quot;postQueueSeconds&quot;,
+               &quot;precision&quot;:18,
+               &quot;defaultValue&quot;:&quot;0&quot;,
+               &quot;scale&quot;:0,
+               &quot;format&quot;:&quot;0&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;preQueueSeconds&quot;,
+               &quot;name&quot;:&quot;preQueueSeconds&quot;,
+               &quot;type&quot;:&quot;Numeric&quot;,
+               &quot;label&quot;:&quot;preQueueSeconds&quot;,
+               &quot;precision&quot;:18,
+               &quot;defaultValue&quot;:&quot;0&quot;,
+               &quot;scale&quot;:0,
+               &quot;format&quot;:&quot;0&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;Skill_Name&quot;,
+               &quot;name&quot;:&quot;Skill_Name&quot;,
+               &quot;type&quot;:&quot;Text&quot;,
+               &quot;label&quot;:&quot;Skill Name&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;team_Name&quot;,
+               &quot;name&quot;:&quot;team_Name&quot;,
+               &quot;type&quot;:&quot;Text&quot;,
+               &quot;label&quot;:&quot;team Name&quot;
+            },
+            {  
+               &quot;fullyQualifiedName&quot;:&quot;total_Duration_Seconds&quot;,
+               &quot;name&quot;:&quot;total_Duration_Seconds&quot;,
+               &quot;type&quot;:&quot;Numeric&quot;,
+               &quot;label&quot;:&quot;total Duration Seconds&quot;,
+               &quot;precision&quot;:18,
+               &quot;defaultValue&quot;:&quot;0&quot;,
+               &quot;scale&quot;:0,
+               &quot;format&quot;:&quot;0&quot;
+            }
+         ]
+      }
+   ]
+}</value>
+    </values>
+    <values>
+        <field>Method__c</field>
+        <value xsi:type="xsd:string">GET</value>
+    </values>
+    <values>
+        <field>ReportId__c</field>
+        <value xsi:type="xsd:double">13.0</value>
+    </values>
+    <values>
+        <field>Report_URL__c</field>
+        <value xsi:type="xsd:string">/services/v8.0/contacts/completed</value>
+    </values>
+    <values>
+        <field>endDate__c</field>
+        <value xsi:type="xsd:string">2019-07-24T05:00:00</value>
+    </values>
+    <values>
+        <field>fields__c</field>
+        <value xsi:type="xsd:string">agentSeconds,contactId,contactStart,firstName,inQueueSeconds,lastName,mediaTypeName,postQueueSeconds,preQueueSeconds,skillName,teamName,totalDurationSeconds</value>
+    </values>
+    <values>
+        <field>startDate__c</field>
+        <value xsi:type="xsd:string">2019-07-23T22:00:00</value>
+    </values>
+</CustomMetadata>

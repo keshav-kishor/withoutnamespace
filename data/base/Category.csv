@@ -1,0 +1,7 @@
+Category Name,Deleted,End Date,Scheduled,Start Date,Template Id,Underlying Reports
+"EM","false","06/12/2019","false","06/01/2019","",""
+"CJA","false","07/04/2019","true","06/01/2019","",""
+"ISSE","false","06/12/2019","false","06/01/2019","",""
+"FCR","false","06/12/2019","false","06/01/2019","","1;2;3;4;8"
+"GTP","false","07/04/2019","false","06/01/2019","",""
+"AP","false","06/12/2019","false","06/01/2019","0Nk4P0000008qjISAQ;sfdc_internal__Service_Analytics_Flex","1;2;3;4;5"

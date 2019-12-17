@@ -1,0 +1,28 @@
+.login-form {
+    height: 100%;
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+}
+.errorBox {
+    display: block;
+    white-space: pre;
+    border: 2px solid rgb(231, 4, 4);
+    padding: 0 1em 0 1em;
+    margin: 1em;
+    background-color: rgb(252, 137, 152);
+    color: black;
+    height: 50px;
+    font-size: 18px;
+}
+.successBox {
+    display: block;
+    white-space: pre;
+    border: 2px solid rgb(116, 130, 195);
+    padding: 0 1em 0 1em;
+    margin: 1em;
+    background-color: rgb(140, 189, 230);
+    color: black;
+    height: 150px;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+}

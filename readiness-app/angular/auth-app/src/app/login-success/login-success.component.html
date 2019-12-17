@@ -1,0 +1,17 @@
+<div class="login-form slds-box slds-grid slds-grid_vertical slds-grid_vertical-align-center slds-size-full"
+  [style.background-image]="getBackground()">
+  <div *ngIf="errorMessage.authSettingsError" class="errorBox" role="status">
+    <p>{{errorMsg}}</p>
+  </div>
+  <div class="successBox" role="status">
+    <p>
+      Login Successful!
+    </p>
+    <p *ngIf="createUser">Creating API Integration User. User Name : {{userName}}</p>
+    <p *ngIf="createUserSuccess">User created Successfully! User Name : {{userName}}</p>
+    <p *ngIf="createAccesskey">Creating Access key and access secret for the user...</p>
+    <p *ngIf="accessKeySuccess">
+      Access key and Secret key saved to custom Metadata Settings!
+    </p>
+  </div>
+</div>

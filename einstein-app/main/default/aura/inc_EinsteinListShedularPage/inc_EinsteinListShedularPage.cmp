@@ -1,0 +1,156 @@
+<aura:component controller="inc_ReportScheduler" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <ltng:require scripts="{!$Resource.underscoreJs}" afterScriptsLoaded="" />
+    <aura:attribute name="data" type="object"/>
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="datasetProgress" type="String" />
+    <aura:attribute name="selAppName" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.fetch}"/>
+    <aura:attribute name="isOpen" type="Boolean" default="false"/>
+    <aura:attribute name="isRunNow" type="Boolean" default="false"/>
+    <aura:attribute name="freqOptions" type="List" default="[
+                                                            {'label': 'Week', 'value': 'Week'},
+                                                            {'label': 'Month', 'value': 'Month'}]"/>
+    <aura:attribute name="sDate" type="Date" />
+    <aura:attribute name="eDate" type="Date" />
+    <aura:attribute name="isCompleted" type="Boolean" default="false"/>
+    <aura:attribute name="hasAPIError" type="Boolean" default="false"/>
+    <aura:attribute name="apiErrMessage" type="String"/>
+    <div class="slds-scrollable_y" style="height: auto; width: auto;" >
+        <lightning:datatable   
+            columns="{!v.columns}"
+            data="{!v.data}"
+            keyField="id"
+            hideCheckboxColumn="true"                 
+            onrowaction="{!c.handleRowAction }"/>             
+    </div>
+    <aura:if isTrue="{!v.isOpen}">
+        <div class="ReactModalPortal flexibleSchedulePortal">
+        <div class="ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 8000;">
+            <div class="ReactModal__Content ReactModal__Content--after-open" tabindex="-1" role="dialog" aria-label="Modal">
+                <section aria-describedby="yn6JIIWwi-modal-content" aria-label="Schedule for 'case-task-df'" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog">
+                    <div class="slds-modal__container flexibleSchedule">
+                        <header class="slds-modal__header">
+                            <button class=" slds-button slds-button_icon-inverse slds-button_icon slds-modal__close" auraionclicktitle="Cancel" onclick="{! c.closeModel }" type="button">
+                                <lightning:buttonIcon iconName="utility:close"  variant="border-inverse" title="close" alternativeText="Close modal" onclick="{! c.closeModel }"/>
+                            </button>
+                            <div>
+                                <h2 class="slds-text-heading_medium" id="yn6JIIWwi-heading">Schedule for {!v.selAppName}</h2>
+                            </div>
+                        </header>
+                        <div class="slds-modal__content flexibleScheduleContent" id="yn6JIIWwi-modal-content">
+                            <div class="flexibleScheduleContainer">
+                                
+                                <div class="timeScheduleBody">
+                                    <div class="flexibleFreqPicker">
+                                        <p class="scheduleBy">SCHEDULED BY</p>
+                                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                                            <lightning:combobox class="freqDropdown" name="progress" value="Week" placeholder="" options="{! v.freqOptions }" onchange="{! c.handleChange }"/>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="scheduleSpecifics">
+                                        <div class="startTimeContainer">
+                                            
+                                            <div class="startTimeContent">
+                                                <div class="slds-dropdown-trigger slds-dropdown-trigger_click startTime" id="q1hNGE6RH0">
+                                                    <lightning:input aura:id="sSchDate" type="datetime" name="sSchDate" label="Start Date" value="{!v.sDate}"/>
+                                                    <lightning:input type="datetime" aura:id="eSchDate" name="eSchDate" label="End Date" value="{!v.eDate}"/>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="konaForm daysOfWeek">
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Sunday"><input id="Sunday573" type="checkbox" class="style-guide input-checkbox"/><label for="Sunday573" class="style-guide checkbox">Su</label></div>
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Monday"><input id="Monday574" type="checkbox" class="style-guide input-checkbox"/><label for="Monday574" class="style-guide checkbox">M</label></div>
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Tuesday"><input id="Tuesday575" type="checkbox" class="style-guide input-checkbox"/><label for="Tuesday575" class="style-guide checkbox">Tu</label></div>
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Wednesday"><input id="Wednesday576" type="checkbox" class="style-guide input-checkbox"/><label for="Wednesday576" class="style-guide checkbox">W</label></div>
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Thursday"><input id="Thursday577" type="checkbox" class="style-guide input-checkbox"/><label for="Thursday577" class="style-guide checkbox">Th</label></div>
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Friday"><input id="Friday578" type="checkbox" class="style-guide input-checkbox"/><label for="Friday578" class="style-guide checkbox">F</label></div>
+                                                <div class="checkboxInput inputContainer dayOfWeek" data-form-input-name="Saturday"><input id="Saturday579" type="checkbox" class="style-guide input-checkbox"/><label for="Saturday579" class="style-guide checkbox">Sa</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer"><button class="slds-button slds-button_neutral cancelBtn" onclick="{! c.closeModel }" type="button">Cancel</button>
+                            <button class="slds-button slds-button_neutral slds-button_brand saveBtn" type="button">Save</button></footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </div>
+        
+    </div>
+    </aura:if>
+    
+    <!-- einstein Data synch cmp -->
+    <aura:if isTrue="{!v.isRunNow}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <button class=" slds-button slds-button_icon-inverse slds-button_icon slds-modal__close" auraionclicktitle="Cancel" onclick="{! c.closeRunNowModel }" type="button">
+                                <lightning:buttonIcon iconName="utility:close"  variant="border-inverse" title="close" alternativeText="Close modal" onclick="{! c.closeRunNowModel }"/>
+                            </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">InContact Analytics Progress...</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <aura:if isTrue="{!and(v.isCompleted==false, v.hasAPIError==false)}">
+                            <div class="onboardImg">
+                                <img src="../../analytics/wave/static/images/WaveCommon/static/images/skipping_1s_16c_30fps.gif"/>
+                                <p><img style="max-width:3%;" src="../../analytics/wave/static/images/WaveCommon/static/images/template/onboard/event-pulsing.gif"/>&nbsp;Creating Dataset...</p>
+                                <aura:iteration items="{!v.datasetProgress}" var="dataset">
+                                    <div class="onboardDt">
+                                        &nbsp;&nbsp;
+                                        <aura:if isTrue="{!dataset.Status=='Completed'}">
+                                            <img style="max-width:3%;" src="../../analytics/wave/static/images/WaveCommon/static/images/template/onboard/event-check.png"/>
+                                            <aura:set attribute="else">
+                                                
+                                                <img style="max-width:3%;" src="../../analytics/wave/static/images/WaveCommon/static/images/template/onboard/event-pulsing.gif"/>
+                                            </aura:set>
+                                        </aura:if>
+                                        &nbsp;{!dataset.dataSetName}
+                                    </div>
+                                </aura:iteration>
+                            </div>
+                        </aura:if>
+                        <div class="onboard">
+                            <aura:if isTrue="{!and(v.hasAPIError,v.isCompleted==true)}">
+                                <p>{!v.apiErrMessage}</p>
+                                
+                            </aura:if>
+                            <aura:if isTrue="{!and(v.isCompleted==true, v.hasAPIError==false)}">
+                                    <div class="onboardImg">
+                                        <aura:if isTrue="{!v.isCompleted}">
+                                            <p><img style="max-width:3%;" src="../../analytics/wave/static/images/WaveCommon/static/images/template/onboard/event-check.png"/>
+                                                Dataset Created!</p>
+                                        </aura:if>
+                                    </div>
+                                </aura:if>
+                        </div>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeRunNowModel }"/>
+                        <lightning:button variant="brand" 
+                                          label="Explore"
+                                          title="Navigate to Analytics Studio"
+                                          disabled="{!v.isCompleted == false}"
+                                          onclick="{! c.explore }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+</aura:component>

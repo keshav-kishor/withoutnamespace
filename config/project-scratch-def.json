@@ -1,0 +1,10 @@
+{
+  "orgName": "Demo Company",
+  "edition": "Developer",
+  "features": ["EinsteinAnalyticsPlus","DevelopmentWave"],
+  "settings": {
+    "orgPreferenceSettings": {
+      "s1DesktopEnabled": true
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.THIS .app-details-screens {
+    display: flex;
+    background-color: white;
+    overflow: auto;
+}
+.THIS .divWidth{
+    width:fit-content;
+}
+.THIS .slds-badge+.slds-badge{
+    margin-left:0px !important;
+}
+.THIS .app-framework-app-details {
+    min-height: 30rem;
+}
+
+
+.THIS .app-details_main-header {
+    margin-bottom: .5rem;
+    font-size: 1rem;
+}
+.THIS .app-description {
+    font-size: .75rem;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.THIS .app-details_sub-header {
+    margin-bottom: .5rem;
+    color: #706e6b;
+}
+
+.THIS .app-details_content {
+    font-size: .75rem;
+    line-height: 1.25;
+}
+.THIS .app-screens {
+   
+}
+.THIS .app-screen {
+    max-height: 23rem;
+    border-radius: .25rem;
+    overflow: hidden;
+}
+.THIS .tepLeftAlign{
+    float:left;
+}
+.THIS .app-preview-group:last-child {
+    margin-bottom: 0;
+}

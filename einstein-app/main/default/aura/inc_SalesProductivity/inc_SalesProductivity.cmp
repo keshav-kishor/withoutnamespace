@@ -1,0 +1,102 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   <aura:registerEvent name="incBackEvent" type="c:inc_CategoryDetailBack"/>
+    <div aura:id="custFCRTempDet"  id="custFCRTempDet"> 
+        <div aura:id="templateDetailTop" class="slds-subPage-header" id="templateDetailTop">
+            <div class="app-high-level slds-p-around_medium">
+                <div class="app-icon slds-m-right_small"><img src="/analytics/wave/web/proto/images/template/icons/campaign.png"/></div>
+                <div class="app-title">
+                    <p class="slds-truncate">Sales Productivity</p>
+                    <p class="multi-line-ellipse">
+                    </p>
+                </div>
+            </div>
+            <div class="" style="text-align:right">
+                <span aura:id="backBtnHeader" class="slds-p-around_xx-small"><lightning:button variant="neutral"  label="Back" title="Back" onclick="{! c.onSPBackClick }"/></span>
+            </div> 
+            
+            
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div aura:id="templateDetailLeft" class="pageDiv slds-col slds-size_1-of-4" id="templateDetailRight">
+                <div aura:id="templateListContainer" id="templateListContainer">
+                    <fieldset class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <span class="labelTxt">Please select an app</span>
+                                <div class="templateDet-tile">
+                                    <input type="radio"  id="SPApp1" name="options" value="on" onclick="{!c.onSPAppClick}"/>
+                                    <label for="SPApp1">
+                                        <div class="templateDet-tile-content">
+                                            <div class="tile-header">
+                                                <div class="tile-icon">
+                                                    <img src="/analytics/wave/web/proto/images/template/icons/campaign.png"/>
+                                                </div>
+                                                <p class="tile-title slds-truncate" title="Sales Productivity">Sales Productivity</p>
+                                            </div>
+                                            <div class="tile-body">
+                                                <p class="multi-line-ellipse">
+                                                    Analyze opportunities closed within given time periods from the end of the customer interaction and shows results by team, skill and agent.
+                                                    <br/>
+                                                    Discover insights into what factors impact resolution time, why they impact it, and what predictions can be made based on these insights.
+                                                </p>
+                                            </div>
+                                            <div class="slds-icon_container slds-visual-picker__text-check">
+                                                <lightning:icon iconName="utility:check" class="tick-icon" size="x-small" alternativeText="Indicates approval"/>
+                                                
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            
+                            
+                        </div>
+                    </fieldset>
+                </div>
+                
+            </div> 
+            <div aura:id="templateDetailLeft" class="pageDiv slds-col" id="templateDetailLeft">
+                <div class="app-details-screens"  >
+   <div class="app-framework-app-details">
+       <div id="tempHeaderDetails">
+           <div class="slds-m-bottom_medium slds-p-horizontal_medium tepLeftAlign">
+               <p class="app-details_sub-header">Analysis</p>
+               <p class="app-details_content">* Lead/Opportunity conversion on first call</p>
+               <p class="app-details_content">* Percentage of opportunities closed on first call</p>
+               <p class="app-details_content">* Performance based on Team, Skill, Channel</p>
+               <p class="app-details_content">* Performance by SF Object Type Case</p>
+           </div>
+           
+      	 <div class="slds-m-bottom_medium slds-p-horizontal_medium tepLeftAlign">
+         <p class="app-details_sub-header">Roles</p>
+          <p class="app-details_content">Data Analyst</p>
+         <p class="app-details_content">Salesforce Administrator</p>
+         <p class="app-details_content">Business Analyst</p>
+      </div>
+      	<div class="slds-m-bottom_medium slds-p-horizontal_medium tepLeftAlign">
+         <p class="app-details_sub-header">Features</p>
+         <p class="app-details_content">Prebuilt Dashboard</p>
+         <p class="app-details_content">Mobile Ready</p>
+         <p class="app-details_content">Dataflow</p>
+         <p class="app-details_content">KPI Rich Datasets</p>
+      </div>
+      	<div class="slds-m-bottom_medium slds-p-horizontal_medium tepLeftAlign">
+         <p class="app-details_sub-header">InContact Reports</p>
+         <p class="app-details_content">Completed Contacts</p>
+          <p class="app-details_content">Salesforce Cases</p>
+      </div>
+      </div>  
+       <div id="tempPreviewImg">
+           <img src="{!$Resource.SPImage}"/>
+           <!--img src="/analytics/wave/web/proto/images/template/icons/preview_approval.jpg"/-->
+       </div>
+   </div>
+   
+
+</div>
+            </div>
+        </div>
+    </div>
+    <div aura:id="SPDashboard" id="SPDashboard">
+        <c:inc_OpportunityDashboard/>
+    </div>
+</aura:component>

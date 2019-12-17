@@ -1,0 +1,112 @@
+{  
+   "fileFormat":{  
+      "charsetName":"UTF-8",
+      "fieldsDelimitedBy":",",
+      "fieldsEnclosedBy":"\"",
+      "linesTerminatedBy":"\r\n"
+   },
+   "objects":[  
+      {  
+         "connector":"CSV",
+         "fullyQualifiedName":"result_csv",
+         "label":"result.csv",
+         "name":"result_csv",
+         "fields":[  
+            {  
+               "fullyQualifiedName":"Agent_Seconds",
+               "name":"Agent_Seconds",
+               "type":"Numeric",
+               "label":"Agent Seconds",
+               "precision":18,
+               "defaultValue":"0",
+               "scale":0,
+               "format":"0"
+            },
+            {  
+               "fullyQualifiedName":"ContactId",
+               "name":"ContactId",
+               "type":"Text",
+               "label":"ContactId"
+               
+            },
+            {  
+               "fullyQualifiedName":"Contact_Start",
+               "name":"Contact_Start",
+               "type":"Date",
+               "label":"Contact Start",
+               "format":"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            },
+            {  
+               "fullyQualifiedName":"First_Name",
+               "name":"First_Name",
+               "type":"Text",
+               "label":"First Name"
+            },
+            {  
+               "fullyQualifiedName":"inQueue_Seconds",
+               "name":"inQueue_Seconds",
+               "type":"Numeric",
+               "label":"inQueue Seconds",
+               "precision":18,
+               "defaultValue":"0",
+               "scale":0,
+               "format":"0"
+            },
+            {  
+               "fullyQualifiedName":"Last_Name",
+               "name":"Last_Name",
+               "type":"Text",
+               "label":"Last Name"
+            },
+            {  
+               "fullyQualifiedName":"Media_Type_Name",
+               "name":"Media_Type_Name",
+               "type":"Text",
+               "label":"Media Type Name"
+            },
+            {  
+               "fullyQualifiedName":"postQueueSeconds",
+               "name":"postQueueSeconds",
+               "type":"Numeric",
+               "label":"postQueueSeconds",
+               "precision":18,
+               "defaultValue":"0",
+               "scale":0,
+               "format":"0"
+            },
+            {  
+               "fullyQualifiedName":"preQueueSeconds",
+               "name":"preQueueSeconds",
+               "type":"Numeric",
+               "label":"preQueueSeconds",
+               "precision":18,
+               "defaultValue":"0",
+               "scale":0,
+               "format":"0"
+            },
+            {  
+               "fullyQualifiedName":"Skill_Name",
+               "name":"Skill_Name",
+               "type":"Text",
+               "label":"Skill Name"
+            },
+            {  
+               "fullyQualifiedName":"team_Name",
+               "name":"team_Name",
+               "type":"Text",
+               "label":"team Name"
+            },
+            {  
+               "fullyQualifiedName":"total_Duration_Seconds",
+               "name":"total_Duration_Seconds",
+               "type":"Numeric",
+               "label":"total Duration Seconds",
+               "precision":18,
+               "defaultValue":"0",
+               "scale":0,
+               "format":"0"
+            }
+         ]
+      }
+   ]
+}
